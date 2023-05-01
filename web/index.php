@@ -18,12 +18,13 @@
 
     # Get result from sql variable. 
     $res = $conn->query($sql);
-
+    
+    $hitung = 0;
     # Validate if there is data in the database and its tables
     if($res->num_rows > 0){
         # Validation prints data if the data is in the table "users"
         while($row = $res->fetch_assoc()){
-        
+            $hitung = $hitung+1;
             echo "ID: ". $row["ID"]. " | Nama: ". $row["Nama"]. " | Alamat: ". $row["Alamat"]. " | Jabatan: ". $row["Jabatan"]. "<br>";
         }
     }
@@ -31,6 +32,8 @@
         # if there is no data, then it will display NULL.
         echo "NULL";
     }
+
+    echo "Total data: ". "$hitung";
 
     # Close connection with database.
     $conn->close();
